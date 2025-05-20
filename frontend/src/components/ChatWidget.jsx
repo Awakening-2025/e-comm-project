@@ -6,74 +6,74 @@ import ChatIcon from './ChatIcon';
 
 // --- Styles for ChatWindow (Example) ---
 const chatWindowStyle = {
-    position: 'fixed',
-    bottom: '90px', // Above the icon
-    right: '30px',
-    width: '350px',
-    height: '400px',
-    backgroundColor: 'white',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.3)',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    zIndex: 999,
-    overflow: 'hidden', // Important for border-radius on children
+  position: 'fixed',
+  bottom: '90px', // Above the icon
+  right: '30px',
+  width: '350px',
+  height: '400px',
+  backgroundColor: 'white',
+  boxShadow: '0 5px 15px rgba(0,0,0,0.3)',
+  borderRadius: '10px',
+  display: 'flex',
+  flexDirection: 'column',
+  zIndex: 999,
+  overflow: 'hidden', // Important for border-radius on children
 };
 const chatHeaderStyle = {
-    backgroundColor: '#0A192F', // Your theme dark blue
-    color: '#d4a053', // Your theme gold
-    padding: '15px',
-    fontSize: '1.2em',
-    fontWeight: 'bold',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  backgroundColor: '#0A192F', // Your theme dark blue
+  color: '#d4a053', // Your theme gold
+  padding: '15px',
+  fontSize: '1.2em',
+  fontWeight: 'bold',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 const closeButtonStyle = {
-    background: 'none',
-    border: 'none',
-    color: '#d4a053',
-    fontSize: '1.5em',
-    cursor: 'pointer',
+  background: 'none',
+  border: 'none',
+  color: '#d4a053',
+  fontSize: '1.5em',
+  cursor: 'pointer',
 };
 const messagesContainerStyle = {
-    flexGrow: 1,
-    padding: '15px',
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
+  flexGrow: 1,
+  padding: '15px',
+  overflowY: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
 };
 const messageStyle = (isUser) => ({
-    maxWidth: '75%',
-    padding: '10px 15px',
-    borderRadius: '15px',
-    marginBottom: '10px',
-    wordWrap: 'break-word',
-    alignSelf: isUser ? 'flex-end' : 'flex-start',
-    backgroundColor: isUser ? '#d4a053' : '#f0f0f0', // Gold for user, light grey for bot
-    color: isUser ? '#0A192F' : '#333', // Dark text for user, regular for bot
+  maxWidth: '75%',
+  padding: '10px 15px',
+  borderRadius: '15px',
+  marginBottom: '10px',
+  wordWrap: 'break-word',
+  alignSelf: isUser ? 'flex-end' : 'flex-start',
+  backgroundColor: isUser ? '#d4a053' : '#f0f0f0', // Gold for user, light grey for bot
+  color: isUser ? '#0A192F' : '#333', // Dark text for user, regular for bot
 });
 const inputAreaStyle = {
-    display: 'flex',
-    padding: '10px',
-    borderTop: '1px solid #eee',
+  display: 'flex',
+  padding: '10px',
+  borderTop: '1px solid #eee',
 };
 const inputStyle = {
-    flexGrow: 1,
-    border: '1px solid #ddd',
-    borderRadius: '20px',
-    padding: '10px 15px',
-    marginRight: '10px',
-    outline: 'none',
+  flexGrow: 1,
+  border: '1px solid #ddd',
+  borderRadius: '20px',
+  padding: '10px 15px',
+  marginRight: '10px',
+  outline: 'none',
 };
 const sendButtonStyle = {
-    padding: '10px 15px',
-    backgroundColor: '#0A192F', // Dark blue
-    color: 'white',
-    border: 'none',
-    borderRadius: '20px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
+  padding: '10px 15px',
+  backgroundColor: '#0A192F', // Dark blue
+  color: 'white',
+  border: 'none',
+  borderRadius: '20px',
+  cursor: 'pointer',
+  fontWeight: 'bold',
 };
 // --- End Styles ---
 
@@ -134,29 +134,29 @@ const ChatWidget = () => {
       {isOpen && (
         // Replace this with your actual ChatWindow component
         <div style={chatWindowStyle}>
-            <div style={chatHeaderStyle}>
-                <span>Awakening AI Chat</span>
-                <button style={closeButtonStyle} onClick={toggleChat}>×</button>
-            </div>
-            <div style={messagesContainerStyle}>
-                {messages.map(msg => (
-                    <div key={msg.id} style={messageStyle(msg.sender === 'user')}>
-                        {msg.text}
-                    </div>
-                ))}
-                <div ref={messagesEndRef} /> {/* For auto-scroll */}
-            </div>
-            <div style={inputAreaStyle}>
-                <input
-                    type="text"
-                    style={inputStyle}
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    placeholder="Type your message..."
-                />
-                <button style={sendButtonStyle} onClick={handleSendMessage}>Send</button>
-            </div>
+          <div style={chatHeaderStyle}>
+            <span>Awakening AI Chat</span>
+            <button style={closeButtonStyle} onClick={toggleChat}>×</button>
+          </div>
+          <div style={messagesContainerStyle}>
+            {messages.map(msg => (
+              <div key={msg.id} style={messageStyle(msg.sender === 'user')}>
+                {msg.text}
+              </div>
+            ))}
+            <div ref={messagesEndRef} /> {/* For auto-scroll */}
+          </div>
+          <div style={inputAreaStyle}>
+            <input
+              type="text"
+              style={inputStyle}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              placeholder="Type your message..."
+            />
+            <button style={sendButtonStyle} onClick={handleSendMessage}>Send</button>
+          </div>
         </div>
       )}
     </>

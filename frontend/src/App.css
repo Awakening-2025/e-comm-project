@@ -1,7 +1,9 @@
 /* General Card Hover */
-.product-card:hover, .category-card:hover {
+.product-card:hover,
+.category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* Bootstrap shadow-lg */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  /* Bootstrap shadow-lg */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -9,21 +11,26 @@
 .category-card .card-img-top {
   transition: opacity 0.3s ease-in-out;
 }
+
 .category-card:hover .card-img-top {
   opacity: 0.8;
 }
+
 .category-card .card-title {
   transition: color 0.3s ease-in-out;
 }
+
 .category-card:hover .card-title {
-  color: var(--bs-primary); /* Use Bootstrap primary color */
+  color: var(--bs-primary);
+  /* Use Bootstrap primary color */
 }
 
 
 
 .service-card,
 .portfolio-card {
-  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Apply to base */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  /* Apply to base */
 }
 
 .service-card:hover,
@@ -36,9 +43,11 @@
 .service-card .card-img-top {
   transition: opacity 0.3s ease-in-out;
 }
+
 .service-card:hover .card-img-top {
   opacity: 0.85;
 }
+
 /* ... any other specific styles ... */
 
 
@@ -47,11 +56,14 @@
 /* Ensure carousel images don't get squished on smaller screens */
 @media (max-width: 768px) {
   .carousel-item img {
-    max-height: 300px !important; /* Adjust as needed */
+    max-height: 300px !important;
+    /* Adjust as needed */
   }
+
   .carousel-caption h3 {
     font-size: 1.5rem;
   }
+
   .carousel-caption p {
     font-size: 0.9rem;
   }
@@ -60,7 +72,8 @@
 
 .footer .nav-link.hover-white:hover,
 .footer .social-icons a.hover-white:hover {
-  color: #ffffff !important; /* Brighter white on hover */
+  color: #ffffff !important;
+  /* Brighter white on hover */
   text-decoration: none;
 }
 
@@ -76,7 +89,8 @@
 }
 
 .hover-primary-text:hover {
-  color: var(--bs-primary) !important; /* Or your primary brand color */
+  color: var(--bs-primary) !important;
+  /* Or your primary brand color */
 }
 
 .text-white-50.hover-primary-text:hover {
@@ -84,13 +98,16 @@
 }
 
 .footer-links .nav-link {
-  padding-left: 0; /* Align with FaAngleRight */
+  padding-left: 0;
+  /* Align with FaAngleRight */
 }
 
 .footer-news li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator for news */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  /* Subtle separator for news */
   padding-bottom: 0.75rem;
 }
+
 .footer-news li:last-child {
   border-bottom: none;
   margin-bottom: 0 !important;
@@ -102,13 +119,15 @@
 
 /* Contact Page Specific Styles */
 .contact-details-list .list-group-item {
-  background-color: transparent !important; /* Ensure bg-light on card doesn't get overridden */
+  background-color: transparent !important;
+  /* Ensure bg-light on card doesn't get overridden */
   padding-left: 0;
   padding-right: 0;
 }
 
 .hover-primary-text:hover {
-  color: var(--bs-primary) !important; /* Or your specific primary color */
+  color: var(--bs-primary) !important;
+  /* Or your specific primary color */
 }
 
 .social-links-contact .social-btn {
@@ -120,10 +139,12 @@
 }
 
 .social-links-contact .social-btn svg {
-  font-size: 1.1rem; /* Adjust icon size within buttons */
+  font-size: 1.1rem;
+  /* Adjust icon size within buttons */
 }
 
 /* Ensure map iframe takes full width of its container */
 .card div iframe {
-  display: block; /* Remove any extra space below iframe */
+  display: block;
+  /* Remove any extra space below iframe */
 }

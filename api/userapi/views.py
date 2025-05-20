@@ -9,6 +9,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
+from django.conf import settings
 
 
 
@@ -96,11 +97,60 @@ class UserViewSet(viewsets.ModelViewSet):
             },status=status.HTTP_400_BAD_REQUEST)
         
 
-class QuerySaveViewSet(viewsets.ModelViewSet):
-    queryset=SaveQueryData.objects.all()
-    serializer_class=QuerySerializer
-    permission_classes=[AllowAny]
+# class QuerySaveViewSet(viewsets.ModelViewSet):
+#     queryset=SaveQueryData.objects.all()
+#     serializer_class=QuerySerializer
+#     permission_classes=[AllowAny]
 
+
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+
+#             # Extracting fields from request.data
+#             name = request.data.get("name", "No name provided")
+#             email = request.data.get("email", "No email provided")
+#             number = request.data.get("phone_number", "No phone number provided")
+#             website_link = request.data.get("website_link", "No website link provided")
+#             budget = request.data.get("budget", "No budget provided")
+#             message = request.data.get("query", "No message provided")
+
+#             # Email content
+
+#             subject = f"Customer query Form Awakening Coins {name}"
+#             content = (
+#                 f"📨 New Contact Form Submission\n\n"
+#                 f"👤 Name: {name}\n"
+#                 f"📧 Email: {email}\n"
+#                 f"📱 Phone Number: {number}\n"
+#                 f"🔗 Website Link: {website_link}\n"
+#                 f"💰 Budget: {budget}\n"
+#                 f"📝 Message:\n{message}\n"
+#             )
+
+#             # Send the email
+
+#             send_mail(
+#                 subject,
+#                 content,
+#                 settings.EMAIL_HOST_USER,
+#                 ['Wd.awakeningcoins@gmail.com'],       
+#                 fail_silently=False,
+#             )
+
+#             return Response({
+#                 "message": "Your query has been submitted. Our team will get back to you shortly.",
+#                 "data": serializer.data
+#             }, status=status.HTTP_201_CREATED)
+
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuerySaveViewSet(viewsets.ModelViewSet):
+    queryset = SaveQueryData.objects.all()
+    serializer_class = QuerySerializer
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -115,10 +165,9 @@ class QuerySaveViewSet(viewsets.ModelViewSet):
             budget = request.data.get("budget", "No budget provided")
             message = request.data.get("query", "No message provided")
 
-            # Email content
-
-            subject = f"Customer query Form Awakening Coins {name}"
-            content = (
+            # Admin Email
+            subject_admin = f"Customer query Form Awakening Coins {name}"
+            content_admin = (
                 f"📨 New Contact Form Submission\n\n"
                 f"👤 Name: {name}\n"
                 f"📧 Email: {email}\n"
@@ -128,18 +177,37 @@ class QuerySaveViewSet(viewsets.ModelViewSet):
                 f"📝 Message:\n{message}\n"
             )
 
-            # Send the email
-
+            # Send email to Admin
             send_mail(
-                subject,
-                content,
-                'raghavpraveenraghav@gmail.com',         # From email
-                ['Wd.awakeningcoins@gmail.com'],       # To email
+                subject_admin,
+                content_admin,
+                settings.EMAIL_HOST_USER,
+                ['Wd.awakeningcoins@gmail.com'],
+                fail_silently=False,
+            )
+
+            # User Confirmation Email
+            subject_user = "Thank you for contacting Awakening Coins"
+            content_user = (
+                f"Hi {name},\n\n"
+                f"Thank you for reaching out to Awakening Coins. We've received your query:\n\n"
+                f"📝 \"{message}\"\n\n"
+                f"Our team will review your message and get back to you shortly.\n\n"
+                f"Warm regards,\n"
+                f"Awakening Coins Team"
+            )
+
+            # Send confirmation email to User
+            send_mail(
+                subject_user,
+                content_user,
+                settings.EMAIL_HOST_USER,
+                [email],  # user's email
                 fail_silently=False,
             )
 
             return Response({
-                "message": "Your query has been submitted. Our team will get back to you shortly.",
+                "message": "Your query has been submitted. Confirmation email sent.",
                 "data": serializer.data
             }, status=status.HTTP_201_CREATED)
 
