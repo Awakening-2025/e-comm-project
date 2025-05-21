@@ -92,10 +92,10 @@ function Footer() {
             <Nav className="flex-column footer-links">
               <Nav.Link as={Link} to="/about" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />About Us</Nav.Link>
               <Nav.Link as={Link} to="/services" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Services</Nav.Link>
-              <Nav.Link as={Link} to="/portfolio" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Portfolio</Nav.Link>
-              <Nav.Link as={Link} to="/blog" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Blog</Nav.Link>
+              <Nav.Link as={Link} to="/about" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Portfolio</Nav.Link>
+              <Nav.Link as={Link} to="/about" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Blog</Nav.Link>
               <Nav.Link as={Link} to="/contact" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Contact Us</Nav.Link>
-              <Nav.Link as={Link} to="/careers" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Careers</Nav.Link>
+              <Nav.Link as={Link} to="/about" className="text-white-50 small py-1 hover-primary-text"><FaAngleRight className="me-1" />Careers</Nav.Link>
             </Nav>
           </Col>
 
