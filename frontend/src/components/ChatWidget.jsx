@@ -86,6 +86,7 @@ const ChatWidget = () => {
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null); // For scrolling to bottom
 
+  
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };

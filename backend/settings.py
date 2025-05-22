@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4gv@b*e5tay-un9h-$oh9uapqj8q_uso@xf&g^akt1s+ipw=ir
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "56.228.27.229"]
 
 
 # Application definition
@@ -105,13 +105,18 @@ EMAIL_HOST_PASSWORD = 'nhdn qifx bozx rbyt'
 WSGI_APPLICATION = 'backend.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
-    "http://127.0.0.1:8080",
+    "http://56.228.27.229:8080",
 ]
-CORS_ALLOW_CREDENTIALS = True  # Required for authentication with cookies/tokens
+
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
+    "http://56.228.27.229:8080",
 ]
+
+
+CORS_ALLOW_CREDENTIALS = True 
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
