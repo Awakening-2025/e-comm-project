@@ -7,6 +7,7 @@ import { Spinner, Container } from 'react-bootstrap'; // For fallback UI
 import Header from './components/layout/Header.jsx';
 import Footer from './components/layout/Footer.jsx';
 import ServiceDetailPage from './components/ServiceDetailPage.jsx';
+import QuickInfo from './components/QuickInfo.jsx';
 
 // Lazy load pages for better initial load time
 const HomePage = lazy(() => import('./components/HomePage.jsx'));
@@ -62,6 +63,7 @@ function App() {
         </Suspense>
       </main>
       <ChatWidget />
+      <QuickInfo />
       <Footer />
     </Router>
   );
