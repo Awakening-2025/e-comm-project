@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup } from 'react-bootstrap';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram, FaWhatsapp, FaPaperPlane } from 'react-icons/fa';
 import { REST_URL_OBJ } from '../utils/constant/restUrl';
 import httpClient from '../utils/httpclint';
 
@@ -128,7 +128,30 @@ const GitsCloneStyles = () => (
     .row-gits-custom-gutter {
         --bs-gutter-x: 1.5rem; /* Default is 1.5rem, adjust as needed */
     }
+  .btn-action-gits {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
 
+.btn-action-gits:hover {
+  background-color: #212529;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn {
+  background-color: #4a773c;
+}
+
+.whatsapp-btn:hover {
+  background-color:rgb(41, 119, 18);
+}
   `}</style>
 );
 
@@ -151,39 +174,45 @@ function ContactPage() {
     }));
   };
 
-  
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await httpClient(
-      "post",
-      REST_URL_OBJ.RAISE_QUERY_FORM.SAVE_DATA,
-      formData
-    );
+  const predefinedMessage = "Hi, I'm interested in exploring your services and how they can help my business. Please get in touch with me at your earliest convenience. Thank you!";
 
-    if (response?.message) {
-      alert("Your query has been submitted successfully. Our team will contact you shortly.");
-      setFormData({
-        name: "",
-        email: "",
-        phone_number: "",
-        website_link: "",
-        query: "",
-        budget: ""
-      });
-    } else {
-      alert("Submission failed. Please try again.");
+  const whatsappNumber = "918745866373";
+
+  const encodedMessage = encodeURIComponent(predefinedMessage);
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await httpClient(
+        "post",
+        REST_URL_OBJ.RAISE_QUERY_FORM.SAVE_DATA,
+        formData
+      );
+
+      if (response?.message) {
+        alert("Your query has been submitted successfully. Our team will contact you shortly.");
+        setFormData({
+          name: "",
+          email: "",
+          phone_number: "",
+          website_link: "",
+          query: "",
+          budget: ""
+        });
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data?.message || "Something went wrong!");
+      } else if (error.request) {
+        alert("No response from the server. Please check your connection.");
+      } else {
+        alert("An unexpected error occurred. Please try again.");
+      }
     }
-  } catch (error) {
-    if (error.response) {
-      alert(error.response.data?.message || "Something went wrong!");
-    } else if (error.request) {
-      alert("No response from the server. Please check your connection.");
-    } else {
-      alert("An unexpected error occurred. Please try again.");
-    }
-  }
-};
+  };
 
 
 
@@ -193,40 +222,40 @@ const handleSubmit = async (e) => {
   return (
     <>
       <GitsCloneStyles /> {/* Include the custom styles */}
-      
+
       <Container className="contact-page-gits-clone">
         <Row className="row-gits-custom-gutter"> {/* Optional: Custom gutter class */}
           {/* Left Column: Contact Form */}
           <Col lg={8} md={7} className="form-section-gits">
             <h3 className="form-title-gits">Send Message Us</h3>
             <div className="form-title-underline-gits"></div>
-            
+
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col md={6}>
                   <Form.Group controlId="formNameGits">
                     {/* <Form.Label className="form-label-gits">Name*</Form.Label> */}
-                    <Form.Control 
-                      type="text" 
-                      name="name" 
-                      placeholder="Name*" 
-                      value={formData.name} 
-                      onChange={handleChange} 
-                      className="form-control-gits" 
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      placeholder="Name*"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-control-gits"
                     />
                   </Form.Group>
                 </Col>
                 <Col md={6}>
                   <Form.Group controlId="formEmailGits">
                     {/* <Form.Label className="form-label-gits">Email*</Form.Label> */}
-                    <Form.Control 
-                      type="email" 
-                      name="email" 
-                      placeholder="Email*" 
-                      value={formData.email} 
-                      onChange={handleChange} 
-                      required 
-                      className="form-control-gits" 
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      placeholder="Email*"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="form-control-gits"
                     />
                   </Form.Group>
                 </Col>
@@ -234,13 +263,13 @@ const handleSubmit = async (e) => {
 
               <Form.Group controlId="formMobileGits">
                 {/* <Form.Label className="form-label-gits">Mobile*</Form.Label> */}
-                <Form.Control 
-                  type="tel" 
-                  name="phone_number" 
-                  placeholder="Mobile*" 
-                  value={formData.phone_number} 
-                  onChange={handleChange} 
-                  className="form-control-gits" 
+                <Form.Control
+                  type="tel"
+                  name="phone_number"
+                  placeholder="Mobile*"
+                  value={formData.phone_number}
+                  onChange={handleChange}
+                  className="form-control-gits"
                 />
               </Form.Group>
 
@@ -248,26 +277,26 @@ const handleSubmit = async (e) => {
                 <Col md={6}>
                   <Form.Group controlId="formWebsiteGits">
                     {/* <Form.Label className="form-label-gits">Website</Form.Label> */}
-                    <Form.Control 
-                      type="url" 
-                      name="website_link" 
+                    <Form.Control
+                      type="url"
+                      name="website_link"
                       placeholder="Website*" // In screenshot it's Website*
-                      value={formData.website_link} 
-                      onChange={handleChange} 
-                      className="form-control-gits" 
+                      value={formData.website_link}
+                      onChange={handleChange}
+                      className="form-control-gits"
                     />
                   </Form.Group>
                 </Col>
                 <Col md={6}>
                   <Form.Group controlId="formBudgetGits">
                     {/* <Form.Label className="form-label-gits">Budget</Form.Label> */}
-                    <Form.Control 
-                      type="text" 
-                      name="budget" 
+                    <Form.Control
+                      type="text"
+                      name="budget"
                       placeholder="Budget*" // In screenshot it's Budget*
-                      value={formData.budget} 
-                      onChange={handleChange} 
-                      className="form-control-gits" 
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="form-control-gits"
                     />
                   </Form.Group>
                 </Col>
@@ -275,21 +304,40 @@ const handleSubmit = async (e) => {
 
               <Form.Group controlId="formRequirementGits">
                 {/* <Form.Label className="form-label-gits">Your Requirement*</Form.Label> */}
-                <Form.Control 
-                  as="textarea" 
-                  name="query" 
-                  rows={5} 
-                  placeholder="Your Requirement*" 
-                  value={formData.query} 
-                  onChange={handleChange} 
-                  required 
-                  className="form-control-gits" 
+                <Form.Control
+                  as="textarea"
+                  name="query"
+                  rows={5}
+                  placeholder="Your Requirement*"
+                  value={formData.query}
+                  onChange={handleChange}
+                  required
+                  className="form-control-gits"
                 />
               </Form.Group>
 
-              <Button type="submit" className="btn-send-gits">
-                Send Now
-              </Button>
+              <div className="d-flex flex-wrap gap-3 mt-4">
+                {/* Send Now Button */}
+                <Button type="submit" className="btn-action-gits  whatsapp-btn">
+                  <FaPaperPlane className="me-2" /> Send Now
+                </Button>
+
+                {/* Call Now Button */}
+                <Button as="a" href="tel:+918745866373" className="btn-action-gits  whatsapp-btn">
+                  <FaPhoneAlt className="me-2" /> Call Now
+                </Button>
+
+                <Button
+                  as="a"
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-action-gits whatsapp-btn"
+                >
+                  <FaWhatsapp className="me-2" /> WhatsApp Now
+                </Button>
+              </div>
+
             </Form>
           </Col>
 
@@ -298,21 +346,21 @@ const handleSubmit = async (e) => {
             <div className="sidebar-gits">
               <h5>Awakening Coins</h5>
               <p>
-                <FaMapMarkerAlt className="sidebar-icon-gits"/>
+                <FaMapMarkerAlt className="sidebar-icon-gits" />
                 E-6,7, KH.NO-103, PANCHSHEEL COLONY, LAL KUAN LANDMARK SHIV MANDIR, Ghaziabad, Uttar Pradesh, 201009
               </p>
               <p>
                 <FaPhoneAlt className="sidebar-icon-gits" />
-                Phone: <a href="tel:+919958732814" className="text-decoration-none" style={{color: '#ccc'}}>+(91) 8745866373</a>
+                Phone: <a href="tel:+919958732814" className="text-decoration-none" style={{ color: '#ccc' }}>+(91) 8745866373</a>
               </p>
               <p>
                 <FaPhoneAlt className="sidebar-icon-gits" />
-                Office: <a href="tel:+911204151836" className="text-decoration-none" style={{color: '#ccc'}}>+(91) 8745866373</a>
+                Office: <a href="tel:+911204151836" className="text-decoration-none" style={{ color: '#ccc' }}>+(91) 8745866373</a>
               </p>
               <p>
                 <FaEnvelope className="sidebar-icon-gits" />
-                Email: <a href="mailto:info.awakeningcoins@gmail.com" className="text-decoration-none" style={{color: '#ccc'}}>info.awakeningcoins@gmail.com
-</a>
+                Email: <a href="mailto:info.awakeningcoins@gmail.com" className="text-decoration-none" style={{ color: '#ccc' }}>info.awakeningcoins@gmail.com
+                </a>
               </p>
 
               <ListGroup className="social-links-gits mt-4">

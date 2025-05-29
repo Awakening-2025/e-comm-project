@@ -6,7 +6,7 @@ const servicesData = [
     {
         id: "web-development",
         // icon: <FaLaptopCode />,
-        title: "Web Development",
+        title: "Web Development and Optimization",
         description: "We craft responsive, high-performance websites and complex web applications tailored to your business needs. From stunning portfolios to robust e-commerce platforms, our solutions are scalable, secure, and built using modern technologies to ensure a seamless user experience across all devices.",
         detailedContent: {
             hero: {
@@ -165,7 +165,44 @@ const servicesData = [
                 buttonText: "Enhance Your UI/UX"
             }
         }
+    },
+    {
+        id: "social-media-marketing",
+        // icon: <FaShareAlt />,
+        title: "Social Media Marketing & Management",
+        description: "Expand your brand’s reach and build lasting relationships with strategic social media marketing. From content creation and scheduling to engagement and analytics, we manage it all to ensure your business thrives on every major platform.",
+        detailedContent: {
+            hero: {
+                title: "Strategic Social Media That Drives Engagement",
+                subtitle: "Build a Loyal Audience and Grow Your Brand Presence",
+                imageUrl: "https://images.unsplash.com/photo-1611175694985-23ab64b68c3c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            },
+            overview: "Social media is one of the most powerful tools to connect with your audience and build brand loyalty. At Awakening Coins, we craft and execute data-driven social media strategies tailored to your goals, helping you foster engagement, grow followers, and drive measurable business results.",
+            keyServices: [
+                "Social Media Strategy Development",
+                "Content Creation (Posts, Reels, Stories, Videos)",
+                "Platform Management (Facebook, Instagram, LinkedIn, Twitter, etc.)",
+                "Community Management & Engagement",
+                "Paid Social Advertising & Campaigns",
+                "Influencer Collaboration & Outreach",
+                "Social Media Analytics & Reporting"
+            ],
+            platforms: ["Facebook", "Instagram", "LinkedIn", "Twitter", "Pinterest", "YouTube", "TikTok"],
+            benefits: [
+                "Enhanced Brand Awareness",
+                "Stronger Customer Relationships",
+                "Increased Website Traffic & Leads",
+                "Improved Engagement & Follower Growth",
+                "Consistent Brand Messaging",
+                "Real-Time Audience Feedback"
+            ],
+            cta: {
+                text: "Want to turn your social channels into growth engines?",
+                buttonText: "Supercharge Your Social Media"
+            }
+        }
     }
+
 ];
 
 export const getAllServices = () => servicesData;

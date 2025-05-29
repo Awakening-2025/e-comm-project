@@ -77,7 +77,7 @@
 //     .hero-carousel .hero-button-gits-inspired svg {
 //       margin-right: 0.5em;
 //     }
-    
+
 //     /* Styling for Carousel Controls - making them more visible */
 //     .hero-carousel .carousel-control-prev-icon,
 //     .hero-carousel .carousel-control-next-icon {
@@ -230,7 +230,7 @@
 //           ))}
 //         </Row>
 //       </Container>
-      
+
 //       {/* Why Partner With Us Section */}
 //       <Container className="text-center py-5 my-4 bg-light rounded">
 //         <h2 className="mb-5 display-6 fw-bold" style={{color: "#0056b3"}}>Why Partner With Us?</h2>
@@ -537,7 +537,7 @@ const heroCarouselData = [
     title: 'INNOVATIVE WEB SOLUTIONS',
     subtitle: 'Crafting Digital Experiences That Convert & Inspire Action!',
     buttonText: 'Explore Our Work',
-    buttonLink: '/portfolio',
+    buttonLink: '/services/portfolio',
     buttonIcon: <FaLaptopCode />
   },
   {
@@ -560,9 +560,9 @@ const heroCarouselData = [
 
 // Updated Data for services section to reflect service page structure more
 const servicesDataHomePage = [
-  { id: 1, name: 'Web Development', icon: <FaLaptopCode size={45} className="service-icon-home"/>, description: 'Crafting stunning, responsive websites that engage users and drive conversions.', slug: 'web-development' },
-  { id: 2, name: 'SEO & SCM', icon: <FaSearchDollar size={45} className="service-icon-home"/>, description: 'Boost visibility and rank higher with expert SEO and targeted Search Campaign Management.', slug: 'seo' }, // Combined SEO & SCM
-  { id: 3, name: 'Graphic & UI/UX Design', icon: <FaPaintBrush size={45} className="service-icon-home"/>, description: 'Creative graphics and intuitive UI/UX designs that make your brand stand out.', slug: 'graphic-design' }, // Combined Graphics & UI/UX
+  { id: 1, name: 'Web Development', icon: <FaLaptopCode size={45} className="service-icon-home" />, description: 'Crafting stunning, responsive websites that engage users and drive conversions.', slug: 'web-development' },
+  { id: 2, name: 'SEO & SCM', icon: <FaSearchDollar size={45} className="service-icon-home" />, description: 'Boost visibility and rank higher with expert SEO and targeted Search Campaign Management.', slug: 'seo' }, // Combined SEO & SCM
+  { id: 3, name: 'Graphic & UI/UX Design', icon: <FaPaintBrush size={45} className="service-icon-home" />, description: 'Creative graphics and intuitive UI/UX designs that make your brand stand out.', slug: 'graphic-design' }, // Combined Graphics & UI/UX
 ];
 
 const whyPartnerData = [
@@ -579,15 +579,15 @@ function HomePage() {
       {/* Hero Section - Carousel */}
       <Carousel fade interval={5000} className="hero-carousel">
         {heroCarouselData.map((item, index) => (
-          <Carousel.Item 
-            key={index} 
+          <Carousel.Item
+            key={index}
             style={{ backgroundImage: `url(${item.image})` }}
           >
             <div className="carousel-caption-custom">
               <h1>{item.title}</h1>
               <p className="subtitle">{item.subtitle}</p>
-              <Button 
-                as={Link} 
+              <Button
+                as={Link}
                 to={item.buttonLink}
                 className="hero-button" // Uses new class for styling
               >
@@ -624,9 +624,9 @@ function HomePage() {
                   {service.icon}
                   <Card.Title as="h4" className="card-title-home my-3">{service.name}</Card.Title>
                   <Card.Text>{service.description}</Card.Text>
-                  <Button 
-                    as={Link} 
-                    to={`/services/${service.slug}`} 
+                  <Button
+                    as={Link}
+                    to={`/services/${service.slug}`}
                     className="btn-learn-more-home mt-auto"
                   >
                     Learn More
@@ -637,7 +637,7 @@ function HomePage() {
           ))}
         </Row>
       </Container>
-      
+
       {/* Why Partner With Us Section */}
       <Container fluid className="why-partner-section"> {/* fluid for full width bg */}
         <Container> {/* Inner container for content width */}
