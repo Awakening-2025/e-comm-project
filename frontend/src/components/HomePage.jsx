@@ -276,6 +276,9 @@ import { FaLightbulb, FaChartLine, FaUsers, FaLaptopCode, FaSearchDollar, FaPain
 import HeroImage1 from "../assets/CodingImage.jpg";
 import HeroImage2 from "../assets/DarkImage.jpg";
 import HeroImage3 from "../assets/FrontCode.jpg";
+import SeoImg from "../assets/bannerImage1.jpeg";
+import GraphicsImg from "../assets/graphicsDesign.jpg";
+
 
 // Ensure you have a shared CSS file or import styles as needed
 // For example, if you have a btn-submit-gradient class, ensure it's defined.
@@ -526,6 +529,21 @@ const HomePageStyles = () => (
       background-color: var(--primary-dark-color) !important;
       border-color: var(--primary-dark-color) !important;
     }
+      /* Services Section */
+.services-section {
+  padding: 4rem 1rem;
+  background-color: var(--white-color);
+}
+
+.service-img-home {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* ...rest of your service styles... */
+
   `}
   </style>
 );
@@ -560,9 +578,9 @@ const heroCarouselData = [
 
 // Updated Data for services section to reflect service page structure more
 const servicesDataHomePage = [
-  { id: 1, name: 'Web Development', icon: <FaLaptopCode size={45} className="service-icon-home" />, description: 'Crafting stunning, responsive websites that engage users and drive conversions.', slug: 'web-development' },
-  { id: 2, name: 'SEO & SCM', icon: <FaSearchDollar size={45} className="service-icon-home" />, description: 'Boost visibility and rank higher with expert SEO and targeted Search Campaign Management.', slug: 'seo' }, // Combined SEO & SCM
-  { id: 3, name: 'Graphic & UI/UX Design', icon: <FaPaintBrush size={45} className="service-icon-home" />, description: 'Creative graphics and intuitive UI/UX designs that make your brand stand out.', slug: 'graphic-design' }, // Combined Graphics & UI/UX
+  { id: 1, name: 'Web Development', icon: <img src={HeroImage3} alt="Web Development" className="service-img-home" />, description: 'Crafting stunning, responsive websites that engage users and drive conversions.', slug: 'web-development' },
+  { id: 2, name: 'SEO & SCM', icon: <img src={SeoImg} alt="Search Engine Optimization" className="service-img-home" />, description: 'Boost visibility and rank higher with expert SEO and targeted Search Campaign Management.', slug: 'seo' }, // Combined SEO & SCM
+  { id: 3, name: 'Graphic & UI/UX Design', icon: <img src={GraphicsImg} alt="Graphics Design" className="service-img-home" />, description: 'Creative graphics and intuitive UI/UX designs that make your brand stand out.', slug: 'graphic-design' }, // Combined Graphics & UI/UX
 ];
 
 const whyPartnerData = [
