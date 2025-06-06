@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Button, NavDropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import awakeningCoinsLogo from '../../assets/websitelogo.jpeg'; // Path sahi hai
 
-// HeaderStyles component (aapka existing code)
+// HeaderStyles component (aapka existing code, isme koi change nahi hai)
 const HeaderStyles = () => {
   // ... aapka poora styles code yahan ...
   const darkBgColor = '#0A192F';
@@ -86,7 +86,7 @@ const HeaderStyles = () => {
       }
       .dropdown-item {
         display: block;
-        width: 95% !important; /* ye check karein, usually 100% hota hai */
+        width: 100% !important; /* width ko 100% rakha hai, jo standard hai */
       }
       .main-navbar-gits .nav-dropdown-custom .dropdown-item:hover,
       .main-navbar-gits .nav-dropdown-custom .dropdown-item:focus {
@@ -129,8 +129,6 @@ const HeaderStyles = () => {
 
 function Header() {
   const navigate = useNavigate();
-  // Pehle product ka ID, aapke data file se. Aap ise dynamic bhi kar sakte hain.
-  const firstProductId = 'premium-knee-brace-adjustable'; // orthopedicProductsData[0].id;
 
   return (
     <>
@@ -155,17 +153,20 @@ function Header() {
               <Nav.Link as={NavLink} to="/" className="nav-link-custom" end>Home</Nav.Link>
               <Nav.Link as={NavLink} to="/services" className="nav-link-custom">Services</Nav.Link>
               <Nav.Link as={NavLink} to="/about" className="nav-link-custom">About</Nav.Link>
-              <NavDropdown title="Healbrace" id="explore-nav-dropdown" className="nav-link-custom nav-dropdown-custom">
+
+              {/* ===== YAHAN CHANGE HUA HAI: NAYA DROPDOWN JODA GAYA HAI ===== */}
+              <NavDropdown title="Join Us" id="join-us-nav-dropdown" className="nav-link-custom nav-dropdown-custom">
                 <NavDropdown.Item
-                  as={NavLink}
-                  // YAHAN CHANGE: Particular product page par link karega
-                  to={`/orthopedic-product/${firstProductId}`}
-                  className="nav-link-custom" // Is class ko dropdown item ke according style karna pad sakta hai
+                  // IMPORTANT: Yahan apne internship Google Form ka link daalein
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScfEBexshohmAm7DjQbuzbxEcBUR_B_c1H4AMpIeg5QFRELTQ/viewform?usp=dialog"
+                  target="_blank" // Naye tab mein kholne ke liye
+                  rel="noopener noreferrer" // Security ke liye
                 >
-                  Orthopedic Product
+                  Apply for Internship
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to="https://www.awakeningcoins.com/" target='_blank' className="nav-link-custom">Our Work</NavDropdown.Item>
               </NavDropdown>
+              {/* ===== END OF CHANGE ===== */}
+
               <Nav.Link as={NavLink} to="/contact" className="nav-link-custom">Contact Us</Nav.Link>
             </Nav>
             <Nav>
