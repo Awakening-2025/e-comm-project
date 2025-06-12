@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup } from 'react-bootstrap';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram, FaWhatsapp, FaPaperPlane, FaDownload } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram, FaWhatsapp, FaPaperPlane, FaDownload, FaUpload } from 'react-icons/fa';
 import { REST_URL_OBJ } from '../utils/constant/restUrl';
 import httpClient from '../utils/httpclint';
 
@@ -316,7 +316,7 @@ function ContactPage() {
                 />
               </Form.Group>
 
-              <div className="d-flex flex-wrap gap-3 mt-4">
+              <div className="d-flex flex-wrap gap-2 mt-4">
                 {/* Send Now Button */}
                 <Button type="submit" className="btn-action-gits  whatsapp-btn">
                   <FaPaperPlane className="me-2" /> Send Now
@@ -345,6 +345,14 @@ function ContactPage() {
                 >
                   <FaDownload className="me-2" /> Download SOP
                 </Button>
+                {/* <Button
+                  as="a"
+                  href="/Website_SOP_Requirement_Form.docx"
+                  download
+                  className="btn-action-gits whatsapp-btn"
+                >
+                  <FaUpload className="me-2" /> Upload SOP
+                </Button> */}
               </div>
 
             </Form>
