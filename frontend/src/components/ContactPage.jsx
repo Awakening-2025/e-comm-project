@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, ListGroup } from 'react-bootstrap';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram, FaWhatsapp, FaPaperPlane } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaPinterest, FaInstagram, FaWhatsapp, FaPaperPlane, FaDownload } from 'react-icons/fa';
 import { REST_URL_OBJ } from '../utils/constant/restUrl';
 import httpClient from '../utils/httpclint';
 
@@ -335,6 +335,15 @@ function ContactPage() {
                   className="btn-action-gits whatsapp-btn"
                 >
                   <FaWhatsapp className="me-2" /> WhatsApp Now
+                </Button>
+
+                <Button
+                  as="a"
+                  href="/Website_SOP_Requirement_Form.docx"
+                  download
+                  className="btn-action-gits whatsapp-btn"
+                >
+                  <FaDownload className="me-2" /> Download SOP
                 </Button>
               </div>
 
