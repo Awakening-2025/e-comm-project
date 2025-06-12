@@ -164,6 +164,14 @@ function Header() {
                 >
                   Apply for Internship
                 </NavDropdown.Item>
+                <NavDropdown.Item
+                  // IMPORTANT: Yahan apne part time job Google Form ka link daalein
+                  href="https://forms.gle/4U3kKu6XjcutwUzn6"
+                  target="_blank" // Naye tab mein kholne ke liye
+                  rel="noopener noreferrer" // Security ke liye
+                >
+                  Apply for Part TimeJob
+                </NavDropdown.Item>
               </NavDropdown>
               {/* ===== END OF CHANGE ===== */}
 
