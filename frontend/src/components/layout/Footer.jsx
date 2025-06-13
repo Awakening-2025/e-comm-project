@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {
-  FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaTwitter, FaFacebookF,
+  FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF,
   FaLinkedinIn, FaInstagram, FaYoutube, FaAngleRight, FaChevronUp,
-  FaPinterest
+  FaPinterest, FaBuilding, FaStore // Naye Icons add kiye
 } from 'react-icons/fa';
-import logoImage from '../../assets/websitelogo.jpeg'; // UPDATE THIS PATH or remove if no logo
+import logoImage from '../../assets/websitelogo.jpeg'; // UPDATE THIS PATH
 
-// Placeholder data - you'll likely fetch this from an API or have it in a config file
+// Placeholder data
 const footerServices = [
   { name: 'SEO Strategy', link: '/services/seo' },
   { name: 'Web Design & Development', link: '/services/web-design' },
@@ -29,7 +29,6 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled up to a certain amount
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -50,38 +49,96 @@ function Footer() {
       behavior: 'smooth'
     });
   };
-  const darkBgColor = '#0A192F';         // Very dark navy/charcoal for the header background
+
+  const darkBgColor = '#0A192F';
+
+  // CSS styles for cleaner JSX
+  const styles = {
+    footer: {
+      backgroundColor: darkBgColor,
+    },
+    footerContactInfo: {
+      listStyle: 'none',
+      paddingLeft: 0,
+    },
+    addressBlock: {
+      marginBottom: '1rem',
+    },
+    addressHeading: {
+      display: 'flex',
+      alignItems: 'center',
+      color: 'white',
+      fontWeight: '600',
+      marginBottom: '0.5rem',
+      fontSize: '0.95rem'
+    },
+    addressText: {
+      color: 'rgba(255, 255, 255, 0.5)',
+      fontSize: '0.875rem', // small
+      marginLeft: '28px', // To align with text, not icon
+      lineHeight: '1.6',
+    },
+    contactLink: {
+      color: 'rgba(255, 255, 255, 0.5)',
+      textDecoration: 'none',
+    },
+    hoverPrimaryText: {
+      transition: 'color 0.2s ease-in-out',
+    },
+  };
 
   return (
-    <footer className="${darkBgColor}text-light position-relative" style={{ backgroundColor: darkBgColor }}>
+    <footer className="text-light position-relative" style={styles.footer}>
       {/* Main Footer Content */}
       <Container className="py-5">
-        <Row className="gy-4 gy-lg-0"> {/* Gutters for vertical spacing on small screens */}
+        <Row className="gy-4 gy-lg-0">
 
-          {/* Column 1: Brand & Contact */}
+          {/* Column 1: Brand & Contact (UPDATED) */}
           <Col lg={4} md={6}>
             <Link to="/" className="d-inline-block mb-3">
               {logoImage ? (
-                <img src={logoImage} alt="Company Logo" height="95" />
+                <img src={logoImage} alt="Awakening Coins Logo" height="95" />
               ) : (
-                <h4 className="text-primary fw-bold mb-0">YOUR BRAND</h4>
+                <h4 className="text-primary fw-bold mb-0">Awakening Coins</h4>
               )}
             </Link>
-            <p className="small text-white-50 mb-3 pe-lg-3">
+            <p className="small text-white-50 mb-4 pe-lg-3">
               Your trusted partner for innovative digital solutions that drive growth and success for businesses worldwide.
             </p>
-            <ul className="list-unstyled footer-contact-info">
-              <li className="mb-2 d-flex align-items-start">
-                <FaMapMarkerAlt size={16} className="me-3 mt-1 text-primary flex-shrink-0" />
-                <span className="small text-white-50 mb-3 pe-lg-3">E-6,7, KH.NO-103, PANCHSHEEL COLONY, LAL KUAN LANDMARK SHIV MANDIR, Ghaziabad, Uttar Pradesh, 201009</span>
+
+            {/* --- NEW ADDRESS & CONTACT STRUCTURE --- */}
+            <div style={styles.addressBlock}>
+              <h6 style={styles.addressHeading}>
+                <FaBuilding size={16} className="me-3 text-primary flex-shrink-0" />
+                Main Office
+              </h6>
+              <p style={styles.addressText}>
+                E-6,7, KH.NO-103, PANCHSHEEL COLONY, LAL KUAN LANDMARK SHIV MANDIR, Ghaziabad, Uttar Pradesh, 201009
+              </p>
+            </div>
+
+            <div style={styles.addressBlock}>
+              <h6 style={styles.addressHeading}>
+                <FaStore size={16} className="me-3 text-primary flex-shrink-0" />
+                Branch Office
+              </h6>
+              <p style={styles.addressText}>
+                H.N-B-386, ST N-10, ROUDAS & KAUSHIK SHOP ON STREET BOTH CORNER, 25 FUTA ROAD, GAGAN VIHAR , LANDMARK:- KRISHNA VATIKA, GHAZIABAD, UTTAR PRADESH:-201001
+              </p>
+            </div>
+
+            <ul style={styles.footerContactInfo}>
+              <li className="mb-2 d-flex align-items-center">
+                <FaPhoneAlt size={14} className="me-3 text-primary flex-shrink-0" />
+                <a href="tel:+918745866373" className="text-white-50 small" style={styles.contactLink}>Phone: +(91) 8745866373</a>
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <FaPhoneAlt size={14} className="me-3 text-primary flex-shrink-0" />
-                <a href="tel:+911204151836" className="text-white-50 small hover-primary-text">+91 8745866373</a>
+                <a href="tel:+918745866373" className="text-white-50 small" style={styles.contactLink}>Office: +(91) 8745866373</a>
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <FaEnvelope size={14} className="me-3 text-primary flex-shrink-0" />
-                <a href="mailto:info@yourbrand.com" className="text-white-50 small hover-primary-text">info.awakeningcoins@gmail.com</a>
+                <a href="mailto:info.awakeningcoins@gmail.com" className="text-white-50 small" style={styles.contactLink}>info.awakeningcoins@gmail.com</a>
               </li>
             </ul>
           </Col>
@@ -133,14 +190,14 @@ function Footer() {
         <Container>
           <Row className="align-items-center">
             <Col md={6} className="text-center text-md-start mb-2 mb-md-0">
-              <p className="small mb-0 text-white">© {currentYear} Your Brand Name. All Rights Reserved.</p>
+              <p className="small mb-0 text-white-50">© {currentYear} Awakening Coins. All Rights Reserved.</p>
             </Col>
             <Col md={6} className="text-center text-md-end">
-              <a href="https://www.facebook.com/profile.php?id=61575380657504" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5 hover-primary-text"><FaFacebookF /></a>
-              <a href="https://in.pinterest.com/awakeningcoins/" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5 hover-primary-text"><FaPinterest /></a>
-              <a href="https://www.linkedin.com/in/awakening-coins-464104363/" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5 hover-primary-text"><FaLinkedinIn /></a>
-              <a href="https://www.instagram.com/awakeningcoinsnew/" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5 hover-primary-text"><FaInstagram /></a>
-              <a href="https://www.youtube.com/@AwakeningCoinsnew" target="_blank" rel="noopener noreferrer" className="text-white fs-5 hover-primary-text"><FaYoutube /></a>
+              <a href="https://www.facebook.com/profile.php?id=61575380657504" target="_blank" rel="noopener noreferrer" className="text-white-50 me-3 fs-5 hover-primary-text"><FaFacebookF /></a>
+              <a href="https://in.pinterest.com/awakeningcoins/" target="_blank" rel="noopener noreferrer" className="text-white-50 me-3 fs-5 hover-primary-text"><FaPinterest /></a>
+              <a href="https://www.linkedin.com/in/awakening-coins-464104363/" target="_blank" rel="noopener noreferrer" className="text-white-50 me-3 fs-5 hover-primary-text"><FaLinkedinIn /></a>
+              <a href="https://www.instagram.com/awakeningcoinsnew/" target="_blank" rel="noopener noreferrer" className="text-white-50 me-3 fs-5 hover-primary-text"><FaInstagram /></a>
+              <a href="https://www.youtube.com/@AwakeningCoinsnew" target="_blank" rel="noopener noreferrer" className="text-white-50 fs-5 hover-primary-text"><FaYoutube /></a>
             </Col>
           </Row>
         </Container>
