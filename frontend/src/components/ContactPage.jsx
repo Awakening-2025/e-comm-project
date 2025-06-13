@@ -316,6 +316,9 @@ function ContactPage() {
                 <Button as="a" href="/Website_SOP_Requirement_Form.docx" download className="btn-action-gits whatsapp-btn">
                   <FaDownload className="me-2" /> Download SOP
                 </Button>
+                <Button as="a" href="https://forms.gle/we4rQsDHMDGc5QLx5" target='_blank' rel="noopener noreferrer" className="btn-action-gits whatsapp-btn">
+                  <FaUpload className="me-2" /> Upload SOP
+                </Button>
               </div>
             </Form>
           </Col>
